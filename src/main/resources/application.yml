@@ -1,0 +1,36 @@
+
+spring:
+  cache:
+    type: none
+
+memcached:
+  cache:
+    servers: solrx401p.stag.ch4.s.com:11111
+    mode: static
+
+logging:
+  level:
+    ROOT: INFO
+    com.amazonaws: DEBUG
+
+
+service:
+  metrics:
+    dropwizard:
+      enabled: true
+    prometheus:
+      enabled: true
+    enabled: false
+  git:
+    enabled: true
+  vip:
+    enabled: true
+  swagger:
+    enabled: true
+  jsonp:
+    enabled: true
+
+
+management:
+  security:
+    enabled: false
