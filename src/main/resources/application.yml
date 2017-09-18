@@ -19,8 +19,7 @@ service:
     dropwizard:
       enabled: true
     prometheus:
-      enabled: true
-    enabled: false
+      enabled: false
   git:
     enabled: true
   vip:
