@@ -6,11 +6,22 @@ import com.codahale.metrics.annotation.Timed;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.services.micro.template.demo.api.response.ServiceResponse;
 import com.services.micro.template.demo.bl.MyService;
+import com.services.micro.template.demo.config.MyConfigurationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service(value = "MyService")
+@EnableConfigurationProperties(MyConfigurationProperties.class)
 public class MyServiceImpl implements MyService {
+
+    @Autowired
+    private MyConfigurationProperties myConfigurationProperties;
+
+    @Value("${service.myKey1}")
+    private String myKey1;
 
     @Override
     @Timed
@@ -19,12 +30,7 @@ public class MyServiceImpl implements MyService {
     @Cacheable(cacheNames = "default")
     public ServiceResponse getResponse(String key) {
         ServiceResponse serviceResponse = new ServiceResponse();
-        serviceResponse.setMessage("Hello " + key);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        serviceResponse.setMessage("Hello " + key + myConfigurationProperties.getMyKey1() + "  key1 is " + myKey1);
         return serviceResponse;
     }
 

@@ -41,6 +41,8 @@ logging:
 
 
 service:
+  myKey1: test1
+  myKey2: test2
   metrics:
     dropwizard:
       enabled: true
