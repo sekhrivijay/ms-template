@@ -1,12 +1,10 @@
 
 spring:
+  application:
+    name: demo
   cache:
     type: none
 
-memcached:
-  cache:
-    servers: solrx401p.stag.ch4.s.com:11111
-    mode: static
 
 logging:
   level:
@@ -21,15 +19,41 @@ service:
     prometheus:
       enabled: false
   git:
-    enabled: true
+    enabled: false
   vip:
-    enabled: true
+    enabled: false
   swagger:
-    enabled: true
+    enabled: false
   jsonp:
-    enabled: true
+    enabled: false
+
+memcached:
+  cache:
+    servers: solrx401p.stag.ch4.s.com:11111
+    mode: static
 
 
 management:
   security:
     enabled: false
+
+hystrix:
+  command:
+    helloCommandKey:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+      circuitBreaker:
+        requestVolumeThreshold: 4
+        sleepWindowInMilliseconds: 60000
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 180000
+  threadpool:
+    helloThreadPoolKey:
+      coreSize: 30
+      metrics:
+        rollingStats:
+          timeInMilliseconds:18000
+
