@@ -31,6 +31,7 @@ public class MyServiceImpl implements MyService {
     public ServiceResponse getResponse(String key) {
         ServiceResponse serviceResponse = new ServiceResponse();
         serviceResponse.setMessage("Hello " + key + myConfigurationProperties.getMyKey1() + "  key1 is " + myKey1);
+        serviceResponse.setType("valid");
         return serviceResponse;
     }
 

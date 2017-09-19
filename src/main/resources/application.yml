@@ -45,7 +45,7 @@ service:
   myKey2: test2
   metrics:
     dropwizard:
-      enabled: true
+      enabled: false
     prometheus:
       enabled: false
   git:

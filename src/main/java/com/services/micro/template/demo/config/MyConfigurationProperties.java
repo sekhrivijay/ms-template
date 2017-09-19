@@ -2,9 +2,11 @@ package com.services.micro.template.demo.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @ConfigurationProperties(prefix = "service")
 @EnableConfigurationProperties
+@Component
 public class MyConfigurationProperties {
     private String myKey1;
     private String myKey2;
