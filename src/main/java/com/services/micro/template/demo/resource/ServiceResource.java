@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class ServiceResource {
 
 
-    @Autowired
     private MyService myService;
 
     @GetMapping

@@ -10,14 +10,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyHealthCheck  implements HealthIndicator {
 
-    @Autowired
     private MyService myService;
 
 
     @Override
     public Health health() {
         ServiceResponse serviceResponse = myService.getResponse("test");
-        if (serviceResponse.getMessage().equals("Helalo test")) {
+        if (serviceResponse.getMessage().equals("Hello test")) {
             return Health.up().build();
         }
         return Health

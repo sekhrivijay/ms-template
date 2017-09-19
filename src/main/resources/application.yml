@@ -45,9 +45,9 @@ service:
   myKey2: test2
   metrics:
     dropwizard:
-      enabled: false
+      enabled: true
     prometheus:
-      enabled: false
+      enabled: true
   git:
     enabled: false
   vip:
@@ -59,7 +59,7 @@ service:
 
 memcached:
   cache:
-    servers: solrx401p.stag.ch4.s.com:11111
+    servers: localhost:11111
     mode: static
 
 
