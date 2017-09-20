@@ -7,6 +7,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.services.micro.template.demo.api.response.ServiceResponse;
 import com.services.micro.template.demo.bl.MyService;
 import com.services.micro.template.demo.config.MyConfigurationProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 @Service(value = "MyService")
 @EnableConfigurationProperties(MyConfigurationProperties.class)
 public class MyServiceImpl implements MyService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MyServiceImpl.class);
 
     @Autowired
     private MyConfigurationProperties myConfigurationProperties;
@@ -29,6 +33,7 @@ public class MyServiceImpl implements MyService {
     @HystrixCommand(groupKey = "hystrixGroup", commandKey = "helloCommandKey", threadPoolKey = "helloThreadPoolKey", fallbackMethod = "fallbackHello")
     @Cacheable(cacheNames = "default")
     public ServiceResponse getResponse(String key) {
+        LOGGER.info("getResponse called ");
         ServiceResponse serviceResponse = new ServiceResponse();
         serviceResponse.setMessage("Hello " + key + myConfigurationProperties.getMyKey1() + "  key1 is " + myKey1);
         serviceResponse.setType("valid");
