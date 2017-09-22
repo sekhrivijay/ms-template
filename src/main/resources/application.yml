@@ -1,5 +1,9 @@
 server:
   context-path: /${spring.application.name}
+  tomcat:
+    accesslog:
+      enabled: false
+    basedir: .
 
 spring:
   application:
@@ -56,6 +60,9 @@ service:
     enabled: false
   jsonp:
     enabled: false
+  logging:
+    enabled: true
+
 
 memcached:
   cache:

@@ -4,6 +4,7 @@ package com.services.micro.template.demo.bl.impl;
 import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Timed;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.services.micro.commons.logging.annotation.LogExecutionTime;
 import com.services.micro.template.demo.api.response.ServiceResponse;
 import com.services.micro.template.demo.bl.MyService;
 import com.services.micro.template.demo.config.MyConfigurationProperties;
@@ -32,6 +33,7 @@ public class MyServiceImpl implements MyService {
     @ExceptionMetered
     @HystrixCommand(groupKey = "hystrixGroup", commandKey = "helloCommandKey", threadPoolKey = "helloThreadPoolKey", fallbackMethod = "fallbackHello")
     @Cacheable(cacheNames = "default")
+    @LogExecutionTime
     public ServiceResponse getResponse(String key) {
         LOGGER.info("getResponse called ");
         ServiceResponse serviceResponse = new ServiceResponse();
@@ -45,4 +47,6 @@ public class MyServiceImpl implements MyService {
         serviceResponse.setMessage("This is Hello fromm fallback " + name);
         return serviceResponse;
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.services.micro.template.demo.resource;
 
+import com.services.micro.commons.logging.annotation.LogExecutionTime;
 import com.services.micro.template.demo.api.request.ServiceRequest;
 import com.services.micro.template.demo.api.response.ServiceResponse;
 import com.services.micro.template.demo.bl.MyService;
@@ -28,12 +29,20 @@ public class ServiceResource {
     }
 
     @GetMapping(value = "/plain")
+    @LogExecutionTime
     public String helloWorlda() {
         return myService.getResponse("test").getMessage();
     }
 
+    @GetMapping(value = "/hello")
+    @LogExecutionTime
+    public String getHello(String key1, String key2) {
+        return "hello " + key1 + "  " +  key2;
+    }
+
     @PostMapping(value = "/post", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
+    @LogExecutionTime
     public ServiceResponse post(@RequestBody ServiceRequest serviceRequest) {
         ServiceResponse serviceResponse = new ServiceResponse();
         serviceResponse.setMessage("Hello " + serviceRequest.getInput());
