@@ -17,7 +17,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 @RunWith(SpringRunner.class)
 public class ServiceResourceTest {
     private MockMvc mockMvc;
@@ -72,9 +74,9 @@ public class ServiceResourceTest {
 
     @Test
     public void testPost() throws Exception {
-        String json = "{\n" +
-                "  \"input\": \"MyInput\"\n" +
-                "}";
+        String json = "{\n"
+                 + "  \"input\": \"MyInput\"\n"
+                 + "}";
         mockMvc.perform(post("/test/post")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))

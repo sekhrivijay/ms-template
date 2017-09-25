@@ -31,7 +31,10 @@ public class MyServiceImpl implements MyService {
     @Override
     @Timed
     @ExceptionMetered
-    @HystrixCommand(groupKey = "hystrixGroup", commandKey = "helloCommandKey", threadPoolKey = "helloThreadPoolKey", fallbackMethod = "fallbackHello")
+    @HystrixCommand(groupKey = "hystrixGroup",
+            commandKey = "helloCommandKey",
+            threadPoolKey = "helloThreadPoolKey",
+            fallbackMethod = "fallbackHello")
     @Cacheable(cacheNames = "default")
     @LogExecutionTime
     public ServiceResponse getResponse(String key) {

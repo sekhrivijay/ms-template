@@ -4,13 +4,16 @@ import com.services.micro.commons.logging.annotation.LogExecutionTime;
 import com.services.micro.template.demo.api.request.ServiceRequest;
 import com.services.micro.template.demo.api.response.ServiceResponse;
 import com.services.micro.template.demo.bl.MyService;
-import com.services.micro.template.demo.bl.impl.MyServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RefreshScope
@@ -37,7 +40,7 @@ public class ServiceResource {
     @GetMapping(value = "/hello")
     @LogExecutionTime
     public String getHello(String key1, String key2) {
-        return "hello " + key1 + "  " +  key2;
+        return "hello " + key1 + "  " + key2;
     }
 
     @PostMapping(value = "/post", consumes = MediaType.APPLICATION_JSON_VALUE,
