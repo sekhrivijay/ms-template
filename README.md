@@ -66,6 +66,9 @@ Here are the list of features provided in the library and the template show case
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
         </dependency>
 ```
+* http://localhost:8080/demo/hystrix
+* http://localhost:8080/demo/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8080%2Fdemo%2Fhystrix.stream
+
 ## Service registration and discovery and load-balancing with Eureka . 
 ```xml
 ```
