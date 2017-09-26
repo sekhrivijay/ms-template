@@ -10,9 +10,9 @@ Here are the list of features provided in the library and the template show case
             <version>1.0.0</version>
         </dependency>
 ```
-http://localhost:8080/demo/vipStatus
-http://localhost:8080/demo/vipLocalStatus
-http://localhost:8080/demo/vipGlobalStatus
+* http://localhost:8080/demo/vipStatus
+* http://localhost:8080/demo/vipLocalStatus
+* http://localhost:8080/demo/vipGlobalStatus
 
 ## JSONP support
 ```xml
@@ -23,7 +23,7 @@ http://localhost:8080/demo/vipGlobalStatus
         </dependency>
 ```
 
-http://localhost:8080/demo/test?callback=abc
+* http://localhost:8080/demo/test?callback=abc
 
 ## Memcache integration
 ```xml
@@ -49,9 +49,9 @@ http://localhost:8080/demo/test?callback=abc
         </dependency>
 ```
 
- http://localhost:8080/demo/metrics
- http://localhost:8080/demo/dropMetrics
- http://localhost:8080/demo/promMetrics
+*  http://localhost:8080/demo/metrics
+*  http://localhost:8080/demo/dropMetrics
+*  http://localhost:8080/demo/promMetrics
 
 
 
@@ -66,7 +66,7 @@ http://localhost:8080/demo/test?callback=abc
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
         </dependency>
 ```
-## Service registration and discovery and load-balancing with Eureka . No more VIPs
+## Service registration and discovery and load-balancing with Eureka . 
 ```xml
 ```
 ## Swagger integration for SDK generation and documentation
@@ -77,7 +77,7 @@ http://localhost:8080/demo/test?callback=abc
             <version>1.0.0</version>
         </dependency>
 ```
- http://localhost:8080/demo/swagger-ui.html
+*  http://localhost:8080/demo/swagger-ui.html
  
 ## SCM (git) build status of the deployed service
 ```xml
@@ -87,7 +87,7 @@ http://localhost:8080/demo/test?callback=abc
             <version>1.0.0</version>
         </dependency>
 ```
- http://localhost:8080/demo/buildStatus
+*  http://localhost:8080/demo/buildStatus
  
 
  
