@@ -1,15 +1,16 @@
 server:
-  context-path: /${spring.application.name}
+  #context-path: /${spring.application.name}
   tomcat:
     accesslog:
       enabled: false
     basedir: .
+  port: 8081
 
 spring:
   application:
     name: demo
-  cache:
-    type: none
+#  cache:
+#    type: none
   profiles:
     active: local
   output:
@@ -53,21 +54,24 @@ service:
     prometheus:
       enabled: true
   git:
-    enabled: false
+    enabled: true
   vip:
-    enabled: false
+    enabled: true
   swagger:
-    enabled: false
+    enabled: true
   jsonp:
     enabled: false
   logging:
     enabled: true
+  memcache:
+    enabled: false
+    ttl: 3360
+    servers: localhost:11211
 
-
-memcached:
-  cache:
-    servers: localhost:11111
-    mode: static
+#memcached:
+#  cache:
+#    servers: localhost:11211
+#    mode: static
 
 
 management:
