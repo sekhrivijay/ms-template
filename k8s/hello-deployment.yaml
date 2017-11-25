@@ -18,7 +18,8 @@ spec:
       containers:
       - name: hello
         imagePullPolicy: Always
-        image: "gcr.io/deep-thought-185318/hello:latest"
+#        image: "gcr.io/deep-thought-185318/hello:latest"
+        image: "sekhrivijay/hello:latest"
         resources:
           requests:
             memory: "0.5Gi"

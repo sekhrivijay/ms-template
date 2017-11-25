@@ -58,7 +58,7 @@ service:
   vip:
     enabled: true
   swagger:
-    enabled: true
+    enabled: false
   jsonp:
     enabled: false
   logging:
@@ -74,9 +74,9 @@ service:
 #    mode: static
 
 
-management:
-  security:
-    enabled: false
+#management:
+#  security:
+#    enabled: false
 
 hystrix:
   command:
