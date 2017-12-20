@@ -9,8 +9,8 @@ server:
 spring:
   application:
     name: demo
-#  cache:
-#    type: none
+  cache:
+    type: none
   profiles:
     active: local
   output:
@@ -38,11 +38,17 @@ spring:
 #    mongodb:
 #      repositories:
 #        enabled: false
+#  redis:
+#    cluster:
+#      nodes: freshdapp01v1.ftdi.com:7000,freshdapp01v1.ftdi.com:7001,freshdapp01v1.ftdi.com:7002
+#      max-redirects: 3
+#    host: freshdapp01v1.ftdi.com
+#    port: 7000
 
 logging:
   level:
     ROOT: INFO
-    com.amazonaws: DEBUG
+    org.springframework.data.redis: DEBUG
 
 
 service:
@@ -65,8 +71,15 @@ service:
     enabled: true
   memcache:
     enabled: false
-    ttl: 3360
-    servers: localhost:11211
+    configs:
+      - ttl: 300
+        servers: localhost:11211
+        name: default
+      - ttl: 30
+        servers: localhost:11211
+        name: default1
+
+
 
 #memcached:
 #  cache:

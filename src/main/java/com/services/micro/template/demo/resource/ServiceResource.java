@@ -7,6 +7,7 @@ import com.services.micro.template.demo.bl.MyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,10 @@ public class ServiceResource {
 //    }
 
     @GetMapping
+    @LogExecutionTime
     public ServiceResponse getMessage() {
         LOGGER.info("getMessage called");
-        return myService.getResponse("testkey");
+        return myService.getResponse("testkey11111333");
     }
 
     @GetMapping(value = "/plain")
@@ -61,6 +63,19 @@ public class ServiceResource {
         return serviceResponse;
     }
 
+    @GetMapping(value = "/test")
+    @Cacheable(cacheNames = "default")
+    public String test(String key) {
+        LOGGER.info("Called test method inside .... ");
+        return "Hello " + key;
+    }
+
+    @GetMapping(value = "/test1")
+    @Cacheable(cacheNames = "default1")
+    public String test1(String key) {
+        LOGGER.info("Called test1 method inside .... ");
+        return "Hello " + key;
+    }
 }
 
 
